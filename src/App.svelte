@@ -1,7 +1,14 @@
 <script lang="ts">
   import Logo from "./assets/bau-logo.png";
+  const stick = () => {
+    let navbar = document.getElementById("navbar");
+    window.pageYOffset > navbar.offsetTop
+      ? navbar.classList.add("sticky")
+      : navbar.classList.remove("sticky");
+  };
 </script>
 
+<svelte:window on:scroll={stick} />
 <main>
   <header>
     <div id="navbar">
