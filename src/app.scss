@@ -1,10 +1,23 @@
+$hilight-color: #1a242f;
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
 }
 
 .make_space {
-  margin-inline: 1rem;
+  margin-inline: 3.5rem;
+  margin-block: 4rem;
+  section {
+    margin-block: inherit;
+  }
 }
+
+// .nav_text_hilight {
+// }
 
 .sticky {
   position: fixed;

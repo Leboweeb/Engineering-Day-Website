@@ -1,9 +1,17 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
 }
 
 .make_space {
-  margin-inline: 1rem;
+  margin-inline: 3.5rem;
+  margin-block: 4rem;
+}
+.make_space section {
+  margin-block: inherit;
 }
 
 .sticky {
