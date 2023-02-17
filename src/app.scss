@@ -23,26 +23,31 @@ body {
   position: fixed;
   top: 0;
 }
+.focused {
+  background-color: $hilight-color;
+}
 
 #navbar {
   overflow: hidden;
   display: flex;
+  height: auto;
   justify-content: space-between;
-  text-align: center;
-  margin: 0;
   #bau-logo {
     padding: 10px;
     margin-inline: 3rem;
   }
   .nav_text {
-    padding: 10px;
-    margin-inline: 3rem;
-    margin-top: 1.5rem;
+    display: flex;
     a {
-      margin-inline: 15px;
+      text-align: center;
+      display: inline-block;
+      padding-top: 2rem;
+      padding-inline: 1rem;
+      margin-inline: 5px;
+      height: 100%;
       &:hover {
         color: #18bc9c;
-        background-color: transparent;
+        background-color: $hilight-color;
       }
       text-decoration: none;
       color: whitesmoke;

@@ -1,6 +1,7 @@
 <script lang="ts">
   import Logo from "./assets/bau-logo.png";
-  import Section from "./Section.svelte";
+  import Section from "./components/Section.svelte";
+  import SplitText from "./components/SplitText.svelte";
   const section_names = ["Home", "Projects", "About", "Contact Us"];
   const stick = () => {
     let navbar = document.getElementById("navbar");
@@ -27,7 +28,8 @@
   {#each section_names as sec}
     <Section
       title={sec}
-      text="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla suscipit exercitationem"
+      text="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro atque quibusdam ex soluta quam eveniet eligendi incidunt, hic sequi nobis, temporibus ipsa officiis fugit itaque laboriosam tempore vitae iusto repellat!\nLorem ipsum dolor sit amet consectetur, adipisicing elit. Porro atque quibusdam ex soluta quam eveniet eligendi incidunt, hic sequi nobis, temporibus ipsa officiis fugit itaque laboriosam tempore vitae iusto repellat!"
+      split={true}
     />
   {/each}
 
