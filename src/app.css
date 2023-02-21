@@ -27,9 +27,6 @@ body {
   .nav_buttons {
     display: none !important;
   }
-  body {
-    background-color: rebeccapurple;
-  }
 }
 #navbar {
   overflow: hidden;
