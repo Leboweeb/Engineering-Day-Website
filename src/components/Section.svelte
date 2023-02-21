@@ -1,28 +1,35 @@
 <script lang="ts">
   import SplitText from "./SplitText.svelte";
+  import { join_with_dash } from "../lib/Lib.svelte";
 
   export let title = "";
-  export let split = false;
+  export let split_dir = "vertical";
   export let text = "";
-  let split_text = text.split("\n");
 </script>
 
-<section>
-  <h1>{title}</h1>
-  <hr />
-  <div id={title}>
-    {#if split}
-      <SplitText strs={text.split("\n")} />
-    {:else}
-      <p>{text}</p>
-    {/if}
-  </div>
-</section>
+<div id={join_with_dash(title)}>
+  <section>
+    <h1>{title}</h1>
+    <hr />
+    <div>
+      {#if split_dir === "horizontal"}
+        <SplitText strs={text.split("\n")} />
+      {:else}
+        {#each text.split("\n") as txt}
+          <p>{text}</p>
+        {/each}
+      {/if}
+    </div>
+  </section>
+</div>
 
 <style lang="scss">
   h1,
   div {
     text-align: center;
+  }
+  p {
+    margin-block: 2.5rem;
   }
   hr {
     margin: 25px auto 30px;

@@ -11,6 +11,9 @@
 <style lang="scss">
   div {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    p {
+      margin-inline: 0.5rem;
+    }
   }
 </style>

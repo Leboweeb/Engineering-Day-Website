@@ -1,4 +1,10 @@
 $hilight-color: #1a242f;
+$navy-blue: #2c3e50;
+
+@mixin width_height($val) {
+  width: $val;
+  height: $val;
+}
 
 html {
   scroll-behavior: smooth;
@@ -27,6 +33,15 @@ body {
   background-color: $hilight-color;
 }
 
+@media screen and (max-width: 480px) {
+  .nav_buttons {
+    display: none !important; // need to do this since font awesome overrides this property
+  }
+  body {
+    background-color: rebeccapurple;
+  }
+}
+
 #navbar {
   overflow: hidden;
   display: flex;
@@ -38,18 +53,21 @@ body {
   }
   .nav_text {
     display: flex;
-    a {
+    button {
+      cursor: pointer;
       text-align: center;
+      border: none;
       display: inline-block;
-      padding-top: 2rem;
+      padding: 15px 32px;
       padding-inline: 1rem;
-      margin-inline: 5px;
+      margin-inline: 0.5rem;
       height: 100%;
       &:hover {
         color: #18bc9c;
         background-color: $hilight-color;
       }
       text-decoration: none;
+      background-color: $navy-blue;
       color: whitesmoke;
     }
   }
