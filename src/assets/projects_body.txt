@@ -1,0 +1,6 @@
+Our projects may be the most important asset to achieve the club's purpose of allowing students with simiar interests interact and work together in a university setting while building important experiences and hoarding essential knowledge and skills saught after in the industry, not taught at university, and most importantly, having a lot of fun!
+
+Students have the freedom to participate in or even start their own projects relevant to the topics of interest of the club : AI, robotics, and gaming.
+
+// These projects facilitate group work in a cheering environment and thus give students access to productive and fun teamwork experiences.
+// I Commented this because i felt it was getting too specific and out of the scope of this text.
