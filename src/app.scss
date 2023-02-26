@@ -28,12 +28,17 @@ $font_family: "Oli Grotesk";
   position: sticky;
 }
 html {
-  scroll-behavior: smooth;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 body {
   margin: 0;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
 }
 
 .make_space {
@@ -145,14 +150,16 @@ body {
   }
 }
 
+.mobile_and_friends {
+  @include make_sticky();
+}
+
 @media screen and (max-width: 800px) {
   #navbar .nav_buttons {
     display: none;
   }
   #mobile_menu {
     display: inline-block;
-  }
-  .mobile_and_friends {
-    @include make_sticky();
+    margin-inline: 0;
   }
 }
