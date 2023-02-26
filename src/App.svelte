@@ -2,14 +2,36 @@
   import Logo from "./assets/bau-logo.png";
   import { join_with_dash } from "./lib/Lib.svelte";
   import Section from "./components/Section.svelte";
+  import Pie from "./components/Pie.svelte";
   const section_names = ["About", "Projects", "Contact Us"];
-  const stick = () => {
-    let navbar = document.getElementById("navbar");
-    window.pageYOffset > navbar.offsetTop
-      ? navbar.classList.add("sticky")
-      : navbar.classList.remove("sticky");
+  const toggle_classname = (elem: HTMLElement, _class: string) => {
+    if (elem.classList.contains(_class)) {
+      elem.classList.remove(_class);
+    } else {
+      elem.classList.add(_class);
+    }
+  };
+  const stick = (elems: string[]) => {
+    for (const element of elems) {
+      let elem: HTMLElement = document.querySelector(element);
+      if (elem != null)
+        window.pageYOffset > elem?.offsetTop
+          ? elem.classList.add("sticky")
+          : elem.classList.remove("sticky");
+    }
+  };
+  const toggle_mobile_menu = () => {
+    let navbar_buttons: HTMLElement = document.querySelector(
+      ".nav_buttons_mobile"
+    );
+    toggle_classname(navbar_buttons, "visible");
   };
   let y: number;
+  import { tweened } from "svelte/motion";
+
+  let percent = 0;
+  const store = tweened(0, { duration: 2000 });
+  $: store.set(percent);
 </script>
 
 <svelte:head>
@@ -18,12 +40,20 @@
     crossorigin="anonymous"
   ></script>
 </svelte:head>
-<svelte:window on:scroll={stick} bind:scrollY={y} />
+<svelte:window
+  on:scroll={() => {
+    stick(["#navbar", "#mobile_dropdown"]);
+  }}
+  bind:scrollY={y}
+/>
 <main>
   <header>
     <div id="navbar">
       <a href="#top" id="bau-logo"><img src={Logo} alt="Bau Logo" /></a>
       <div class="nav_text">
+        <button id="mobile_menu" on:click={toggle_mobile_menu}>
+          <i class="fa-solid fa-bars" />
+        </button>
         {#each section_names as sec}
           <button
             class="nav_buttons"
@@ -36,9 +66,27 @@
             {sec}
           </button>
         {/each}
-        <button id="mobile_menu">
-          <i class="fa-solid fa-bars" />
+      </div>
+    </div>
+    <div class="mobile_wrapper">
+      {#each section_names as sec}
+        <button
+          class="nav_buttons_mobile"
+          on:click={() => {
+            let elem = document.querySelector(`#${join_with_dash(sec)}`);
+            let elem_rect = elem.getBoundingClientRect();
+            window.scrollTo(elem_rect.x, elem_rect.y);
+          }}
+        >
+          {sec}
         </button>
+      {/each}
+      <div class="social">
+        <i class="fab fa-facebook" />
+        <i class="fab fa-github" />
+        <i class="fab fa-instagram" />
+        <i class="fab fa-tiktok" />
+        <i class="fa-solid fa-envelope" />
       </div>
     </div>
   </header>
@@ -46,79 +94,46 @@
 <div class="make_space">
   <Section
     title={section_names[0]}
-    text={"Many freshmen and graduates alike feel unprepared for work or that the subjects they've learned in school or university are not relevant to their degree. Unfortunately, this is true. This is especially true for computer scientists and engineers who often state that they learn much more on their own than in university.\nThis club aims to be the opposite and let you work on"}
+    text={"Many freshmen and graduates alike feel unprepared for work or that the subjects they've learned in school or university are not relevant to their degree. Unfortunately, this is true. This is especially true for computer scientists and engineers who often state that they learn much more on their own than in university.\nThis club aims to be the opposite and let you work on professional level projects and learn in demand skills light years faster than any course. We only ask you to be patient and expect that projects will be hard, because nothing worth doing is easy. "}
   />
+
+  <figure>
+    <Pie percent={$store} />
+    <figcaption>
+      <!-- svelte-ignore a11y-invalid-attribute -->
+      Percentage of students who feel unprepared for
+      <a
+        on:click={() => {
+          percent = 52;
+        }}
+        class="interactive_buttons"
+        href="javascript:void(0)">work</a
+      >
+      , as opposed to
+      <!-- svelte-ignore a11y-invalid-attribute -->
+      <a
+        on:click={() => {
+          percent = 81;
+        }}
+        class="interactive_buttons"
+        href="javascript:void(0)">college</a
+      >
+      [<a
+        href="https://www.edweek.org/teaching-learning/teens-feel-ready-for-college-but-not-so-much-for-work/2019/09"
+        class="interactive_buttons">1</a
+      >] (Click to show)
+    </figcaption>
+  </figure>
   <Section
     title={section_names[1]}
-    text={"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam enim quibusdam illo vero quidem distinctio? Voluptas soluta cupiditate facilis dolore, dignissimos quisquam nemo in doloribus ex aliquam quidem voluptate iure?"}
+    text={"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam enim quibusdam illo vero quidem distinctio? Voluptas soluta cupiditate facilis dolore, dignissimos quisquam nemo in doloribus ex aliquam quidem voluptate iure?\nLorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam enim quibusdam illo vero quidem distinctio? Voluptas soluta cupiditate facilis dolore, dignissimos quisquam nemo in doloribus ex aliquam quidem voluptate iure?"}
+    split_dir="horizontal"
   />
   <Section
     title={section_names[2]}
-    text={"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam enim quibusdam illo vero quidem distinctio? Voluptas soluta cupiditate facilis dolore, dignissimos quisquam nemo in doloribus ex aliquam quidem voluptate iure?"}
+    text={"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam enim quibusdam illo vero quidem distinctio? Voluptas soluta cupiditate facilis dolore, dignissimos quisquam nemo in doloribus ex aliquam quidem voluptate iure?Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam enim quibusdam illo vero quidem distinctio? Voluptas soluta cupiditate facilis dolore, dignissimos quisquam nemo in doloribus ex aliquam quidem voluptate iure?Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam enim quibusdam illo vero quidem distinctio? Voluptas soluta cupiditate facilis dolore, dignissimos quisquam nemo in doloribus ex aliquam quidem voluptate iure?\nLorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam enim quibusdam illo vero quidem distinctio? Voluptas soluta cupiditate facilis dolore, dignissimos quisquam nemo in doloribus ex aliquam quidem voluptate iure?Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam enim quibusdam illo vero quidem distinctio? Voluptas soluta cupiditate facilis dolore, dignissimos quisquam nemo in doloribus ex aliquam quidem voluptate iure?Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam enim quibusdam illo vero quidem distinctio? Voluptas soluta cupiditate facilis dolore, dignissimos quisquam nemo in doloribus ex aliquam quidem voluptate iure?"}
   />
 </div>
-
-Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium nemo
-perspiciatis commodi pariatur aliquam eum facilis magnam possimus iusto, id
-repellat inventore dolores, repudiandae voluptatem distinctio ducimus, maiores
-ipsam! Sed! Repellendus odit ea enim iusto assumenda, officia obcaecati saepe.
-Aut, sint repellendus, earum neque ad expedita et officia odit sequi dignissimos
-laboriosam. Provident ullam voluptate sit inventore fugit, tenetur eius.
-Inventore necessitatibus sit enim obcaecati nulla velit, fugit veritatis non
-aliquam molestias tempora aliquid est nemo facere repellendus! Deserunt
-laudantium reprehenderit illum. Perspiciatis asperiores explicabo cupiditate
-repudiandae excepturi harum maxime. Qui sit velit adipisci, laboriosam pariatur
-ipsum? Quasi ipsa iusto quod quis quos. Facere, cupiditate voluptatem quasi,
-similique rerum excepturi vitae nihil omnis vero quisquam, veniam illum. Atque,
-temporibus in. Illum fuga quaerat assumenda sed accusantium obcaecati, omnis
-modi? Officia aliquam numquam laudantium enim quae sed ipsum. Sint optio rem
-quaerat quia, facilis mollitia ab ut, dicta illo, similique excepturi! Eum
-reiciendis inventore autem vitae, nostrum architecto. Sed fuga debitis veniam
-odio at consectetur illo aperiam, veritatis maxime similique sapiente, obcaecati
-temporibus nemo repudiandae, tempore magni officia eos reprehenderit nulla!
-Maiores repellendus neque, officia consequuntur pariatur eaque ducimus quis
-facere laudantium fuga perferendis voluptas voluptatibus odio illo non
-accusamus. Tempora sint error, optio rem voluptas eos non iste facilis
-consectetur. Praesentium molestias provident quae amet impedit, maiores numquam
-laudantium esse et deserunt labore aliquid quis laboriosam veniam nulla rerum
-laborum quos exercitationem? Necessitatibus asperiores hic delectus. Impedit
-nisi cupiditate maiores. Ipsam veritatis pariatur sed culpa laborum atque
-corrupti, adipisci suscipit cumque, incidunt esse similique impedit! Quae
-praesentium reprehenderit, illum molestias quis quibusdam non cupiditate
-consequuntur laboriosam. Accusamus aspernatur soluta fugiat! Pariatur dicta
-voluptatum, animi sequi adipisci libero distinctio excepturi fugit temporibus
-quo. Ea, pariatur. Iure recusandae, eum nesciunt, quia quibusdam placeat, ab
-obcaecati voluptatibus alias amet omnis harum possimus cumque! Aliquam impedit
-earum sunt eaque alias? Cupiditate adipisci enim ut porro. Quas recusandae ipsam
-fugit deleniti eaque vero et laborum repellat corrupti! Neque quis veniam dicta
-possimus quos illo nam. Facere, optio voluptates eius delectus ab iste pariatur
-numquam quas aperiam quidem. Sit deserunt dolores, iste exercitationem dicta
-veniam non amet atque, voluptas in ratione ducimus iure commodi libero!
-Doloremque? Sequi, culpa error nam similique sed iusto pariatur praesentium
-laudantium deleniti ducimus perferendis aliquam at laborum voluptates, nesciunt
-provident earum! At, aperiam accusamus? Delectus velit ad quam, commodi facere
-vel. Dolores vero accusantium voluptates id vitae reiciendis qui praesentium
-aliquid omnis enim voluptatem laudantium porro, numquam earum perferendis! Quos
-error enim officiis provident, consequatur perspiciatis non dolores laudantium
-similique alias. Illo qui voluptatem, vel adipisci quia maiores eveniet
-provident quaerat maxime, perferendis iste eaque commodi odio. Illo assumenda
-dolorem perspiciatis architecto, sunt iusto suscipit nemo dolor in veniam, non
-et? Quaerat voluptatum mollitia incidunt nemo animi nam porro nihil ipsam,
-libero neque dolor quisquam quas, ea assumenda, dolores provident accusamus iste
-aliquam minima? Distinctio, qui necessitatibus? Aperiam similique adipisci non.
-Qui ipsam architecto nesciunt explicabo esse ducimus rem reiciendis mollitia
-dolorem repellat quia, officiis aliquid repudiandae magnam facere aspernatur
-culpa illum voluptates vel distinctio sit nobis, saepe autem? Et, corrupti.
-Magnam ad illum nihil recusandae! Dolore cum aperiam in, nemo magnam natus
-beatae ab cupiditate consectetur velit, dolorem, eius minima facilis expedita!
-Quis tenetur quos voluptate deserunt eligendi, dolor beatae! Accusantium facilis
-accusamus ducimus inventore, eius, corporis eum sequi eveniet debitis dicta
-dolorum excepturi minima, libero nulla repellendus quod porro ex. Quibusdam
-necessitatibus ipsum debitis id amet similique adipisci officia. Itaque ratione
-doloribus magnam tempore ipsam assumenda voluptatem architecto dignissimos error
-blanditiis iste doloremque, suscipit minus praesentium omnis temporibus repellat
-rerum iusto laudantium veniam officia officiis consectetur. Nulla, sapiente
-dolor.
 
 <style lang="scss">
 </style>

@@ -16,7 +16,7 @@
         <SplitText strs={text.split("\n")} />
       {:else}
         {#each text.split("\n") as txt}
-          <p>{text}</p>
+          <p>{txt}</p>
         {/each}
       {/if}
     </div>

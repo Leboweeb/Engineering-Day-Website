@@ -1,5 +1,6 @@
 html {
   scroll-behavior: smooth;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 body {
@@ -10,8 +11,35 @@ body {
   margin-inline: 3.5rem;
   margin-block: 4rem;
 }
-.make_space section {
+.make_space section,
+.make_space svg,
+.make_space figure {
   margin-block: inherit;
+}
+.make_space figure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+}
+.make_space figcaption {
+  margin-block: 2rem;
+}
+.make_space figure {
+  border: 3px #cccccc solid;
+  padding: 20px 10px;
+  margin: auto;
+}
+
+.interactive_buttons {
+  text-decoration: none;
+  cursor: pointer;
+  border-bottom: 1px solid grey;
+  color: black;
+}
+.interactive_buttons:hover {
+  color: #00acd8;
 }
 
 .sticky {
@@ -19,32 +47,7 @@ body {
   top: 0;
 }
 
-.focused {
-  background-color: #1a242f;
-}
-
-@media screen and (max-width: 480px) {
-  .nav_buttons {
-    display: none !important;
-  }
-}
-#navbar {
-  overflow: hidden;
-  display: flex;
-  height: auto;
-  justify-content: space-between;
-  background-color: #2c3e50;
-  width: 100%;
-  height: auto;
-}
-#navbar #bau-logo {
-  padding: 10px;
-  margin-inline: 3rem;
-}
-#navbar .nav_text {
-  display: flex;
-}
-#navbar .nav_text button {
+.nav_text button {
   cursor: pointer;
   text-align: center;
   border: none;
@@ -57,9 +60,62 @@ body {
   background-color: #2c3e50;
   color: whitesmoke;
 }
-#navbar .nav_text button:hover {
+.nav_text button:hover {
   color: #18bc9c;
   background-color: #1a242f;
+}
+
+#navbar {
+  overflow: hidden;
+  display: flex;
+  height: auto;
+  justify-content: space-between;
+  background-color: #2c3e50;
+  width: 100%;
+}
+#navbar #bau-logo {
+  padding: 10px;
+  margin-inline: 2.5rem;
+}
+
+#mobile_menu {
+  display: none;
+}
+
+.nav_buttons_mobile,
+.social {
+  align-content: center;
+  display: block;
+  width: 100%;
+  padding-block: 5px;
+  text-decoration: none;
+  border: none;
+  background-color: #1a242f;
+  color: white;
+}
+.nav_buttons_mobile:hover,
+.social:hover {
+  background-color: #18bc9c;
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  height: 100%;
+}
+.social i {
+  margin-inline: 5px;
+}
+
+@media screen and (max-width: 800px) {
+  #navbar .nav_buttons {
+    display: none;
+  }
+  #mobile_menu {
+    display: inline-block;
+  }
 }
 
 /*# sourceMappingURL=app.css.map */
