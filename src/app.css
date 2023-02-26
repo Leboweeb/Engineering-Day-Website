@@ -66,7 +66,6 @@ body {
 }
 
 #navbar {
-  overflow: hidden;
   display: flex;
   height: auto;
   justify-content: space-between;
@@ -83,8 +82,8 @@ body {
 }
 
 .mobile_wrapper {
-  overflow: hidden;
   display: none;
+  width: 100%;
 }
 
 .nav_buttons_mobile {
@@ -137,6 +136,11 @@ body {
   }
   #mobile_menu {
     display: inline-block;
+  }
+  .mobile_and_friends {
+    top: 0;
+    align-self: flex-start;
+    position: sticky;
   }
 }
 

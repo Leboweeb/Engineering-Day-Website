@@ -12,32 +12,6 @@
     }
   };
 
-  interface Action {
-    element: string;
-    action?: (() => void)[];
-  }
-
-  const enable_top_margin = (margin: number = 0) => {
-    let e = document.querySelector<HTMLElement>(".mobile_wrapper");
-    if (margin === 0) {
-      e.style.marginTop = "0px";
-    } else {
-      e.style.marginTop = `${margin}rem`;
-    }
-    e.style.width = "100%";
-  };
-  const stick = (elems: Action[]) => {
-    for (const element of elems) {
-      let elem: HTMLElement = document.querySelector(element.element);
-      if (elem != null && window.pageYOffset > elem?.offsetTop) {
-        elem.classList.add("sticky");
-        element?.action?.[0]?.();
-      } else {
-        elem.classList.remove("sticky");
-        element?.action?.[1]?.();
-      }
-    }
-  };
   const toggle_mobile_menu = () => {
     let navbar_buttons: HTMLElement = document.querySelector(".mobile_wrapper");
     toggle_classname(navbar_buttons, "visible");
@@ -56,49 +30,17 @@
     crossorigin="anonymous"
   ></script>
 </svelte:head>
-<svelte:window
-  on:scroll={() => {
-    stick([
-      { element: "#navbar" },
-      {
-        element: ".mobile_wrapper",
-        action: [
-          () => {
-            enable_top_margin(5.5);
-          },
-          enable_top_margin,
-        ],
-      },
-    ]);
-  }}
-  bind:scrollY={y}
-/>
-<main>
-  <header>
-    <div id="navbar">
-      <a href="#top" id="bau-logo"><img src={Logo} alt="Bau Logo" /></a>
-      <div class="nav_text">
-        <button id="mobile_menu" on:click={toggle_mobile_menu}>
-          <i class="fa-solid fa-bars" />
-        </button>
-        {#each section_names as sec}
-          <button
-            class="nav_buttons"
-            on:click={() => {
-              let elem = document.querySelector(`#${join_with_dash(sec)}`);
-              let elem_rect = elem.getBoundingClientRect();
-              window.scrollTo(elem_rect.x, elem_rect.y);
-            }}
-          >
-            {sec}
-          </button>
-        {/each}
-      </div>
-    </div>
-    <div class="mobile_wrapper sticky">
+<svelte:window bind:scrollY={y} />
+<div class="mobile_and_friends">
+  <div id="navbar">
+    <a href="#top" id="bau-logo"><img src={Logo} alt="Bau Logo" /></a>
+    <div class="nav_text">
+      <button id="mobile_menu" on:click={toggle_mobile_menu}>
+        <i class="fa-solid fa-bars" />
+      </button>
       {#each section_names as sec}
         <button
-          class="nav_buttons_mobile"
+          class="nav_buttons"
           on:click={() => {
             let elem = document.querySelector(`#${join_with_dash(sec)}`);
             let elem_rect = elem.getBoundingClientRect();
@@ -108,27 +50,41 @@
           {sec}
         </button>
       {/each}
-      <div class="social">
-        <a href="http://">
-          <i class="fab fa-facebook" />
-        </a>
-        <a href="http://">
-          <i class="fab fa-github" />
-        </a>
-        <a href="http://">
-          <i class="fab fa-instagram" />
-        </a>
-
-        <a href="http://">
-          <i class="fab fa-tiktok" />
-        </a>
-        <a href="http://">
-          <i class="fa-solid fa-envelope" />
-        </a>
-      </div>
     </div>
-  </header>
-</main>
+  </div>
+  <div class="mobile_wrapper">
+    {#each section_names as sec}
+      <button
+        class="nav_buttons_mobile"
+        on:click={() => {
+          let elem = document.querySelector(`#${join_with_dash(sec)}`);
+          let elem_rect = elem.getBoundingClientRect();
+          window.scrollTo(elem_rect.x, elem_rect.y);
+        }}
+      >
+        {sec}
+      </button>
+    {/each}
+    <div class="social">
+      <a href="http://">
+        <i class="fab fa-facebook" />
+      </a>
+      <a href="http://">
+        <i class="fab fa-github" />
+      </a>
+      <a href="http://">
+        <i class="fab fa-instagram" />
+      </a>
+
+      <a href="http://">
+        <i class="fab fa-tiktok" />
+      </a>
+      <a href="http://">
+        <i class="fa-solid fa-envelope" />
+      </a>
+    </div>
+  </div>
+</div>
 <div class="make_space">
   <Section
     title={section_names[0]}

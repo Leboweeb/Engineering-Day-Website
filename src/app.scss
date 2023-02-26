@@ -21,6 +21,12 @@ $font_family: "Oli Grotesk";
   flex-direction: $direction;
   height: 100%;
 }
+
+@mixin make_sticky() {
+  top: 0;
+  align-self: flex-start;
+  position: sticky;
+}
 html {
   scroll-behavior: smooth;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -84,7 +90,6 @@ body {
   color: whitesmoke;
 }
 #navbar {
-  overflow: hidden;
   display: flex;
   height: auto;
   justify-content: space-between;
@@ -101,8 +106,8 @@ body {
 }
 
 .mobile_wrapper {
-  overflow: hidden;
   display: none;
+  width: 100%;
 }
 .nav_buttons_mobile {
   align-content: center;
@@ -146,5 +151,8 @@ body {
   }
   #mobile_menu {
     display: inline-block;
+  }
+  .mobile_and_friends {
+    @include make_sticky();
   }
 }
