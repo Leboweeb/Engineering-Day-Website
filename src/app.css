@@ -82,8 +82,12 @@ body {
   display: none;
 }
 
-.nav_buttons_mobile,
-.social {
+.mobile_wrapper {
+  overflow: hidden;
+  display: none;
+}
+
+.nav_buttons_mobile {
   align-content: center;
   display: block;
   width: 100%;
@@ -93,9 +97,12 @@ body {
   background-color: #1a242f;
   color: white;
 }
-.nav_buttons_mobile:hover,
-.social:hover {
+.nav_buttons_mobile:hover {
   background-color: #18bc9c;
+}
+
+.visible {
+  display: block;
 }
 
 .social {
@@ -104,9 +111,24 @@ body {
   justify-content: center;
   flex-direction: row;
   height: 100%;
+  align-content: center;
+  padding-block: 5px;
+  text-decoration: none;
+  border: none;
+  background-color: #1a242f;
+  color: white;
+}
+.social a {
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  color: white;
 }
 .social i {
   margin-inline: 5px;
+}
+.social i:hover {
+  box-shadow: 0px 0px 8px lightgrey;
 }
 
 @media screen and (max-width: 800px) {

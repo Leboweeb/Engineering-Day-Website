@@ -8,6 +8,12 @@ $font_family: "Oli Grotesk";
   height: $val;
 }
 
+@mixin remove_link_decoration($color: white) {
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  color: $color;
+}
 @mixin center_flex($direction: row) {
   display: flex;
   align-items: center;
@@ -94,8 +100,11 @@ body {
   display: none;
 }
 
-.nav_buttons_mobile,
-.social {
+.mobile_wrapper {
+  overflow: hidden;
+  display: none;
+}
+.nav_buttons_mobile {
   align-content: center;
   display: block;
   width: 100%;
@@ -108,10 +117,26 @@ body {
     background-color: #18bc9c;
   }
 }
+.visible {
+  display: block;
+}
+
 .social {
   @include center_flex();
+  align-content: center;
+  padding-block: 5px;
+  text-decoration: none;
+  border: none;
+  background-color: #1a242f;
+  color: white;
+  a {
+    @include remove_link_decoration();
+  }
   i {
     margin-inline: 5px;
+    &:hover {
+      box-shadow: 0px 0px 8px lightgrey; // no vertical or horizontal shadow, but it has a radius.
+    }
   }
 }
 

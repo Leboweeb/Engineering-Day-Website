@@ -11,19 +11,35 @@
       elem.classList.add(_class);
     }
   };
-  const stick = (elems: string[]) => {
+
+  interface Action {
+    element: string;
+    action?: (() => void)[];
+  }
+
+  const enable_top_margin = (margin: number = 0) => {
+    let e = document.querySelector<HTMLElement>(".mobile_wrapper");
+    if (margin === 0) {
+      e.style.marginTop = "0px";
+    } else {
+      e.style.marginTop = `${margin}rem`;
+    }
+    e.style.width = "100%";
+  };
+  const stick = (elems: Action[]) => {
     for (const element of elems) {
-      let elem: HTMLElement = document.querySelector(element);
-      if (elem != null)
-        window.pageYOffset > elem?.offsetTop
-          ? elem.classList.add("sticky")
-          : elem.classList.remove("sticky");
+      let elem: HTMLElement = document.querySelector(element.element);
+      if (elem != null && window.pageYOffset > elem?.offsetTop) {
+        elem.classList.add("sticky");
+        element?.action?.[0]?.();
+      } else {
+        elem.classList.remove("sticky");
+        element?.action?.[1]?.();
+      }
     }
   };
   const toggle_mobile_menu = () => {
-    let navbar_buttons: HTMLElement = document.querySelector(
-      ".nav_buttons_mobile"
-    );
+    let navbar_buttons: HTMLElement = document.querySelector(".mobile_wrapper");
     toggle_classname(navbar_buttons, "visible");
   };
   let y: number;
@@ -42,7 +58,18 @@
 </svelte:head>
 <svelte:window
   on:scroll={() => {
-    stick(["#navbar", "#mobile_dropdown"]);
+    stick([
+      { element: "#navbar" },
+      {
+        element: ".mobile_wrapper",
+        action: [
+          () => {
+            enable_top_margin(5.5);
+          },
+          enable_top_margin,
+        ],
+      },
+    ]);
   }}
   bind:scrollY={y}
 />
@@ -68,7 +95,7 @@
         {/each}
       </div>
     </div>
-    <div class="mobile_wrapper">
+    <div class="mobile_wrapper sticky">
       {#each section_names as sec}
         <button
           class="nav_buttons_mobile"
@@ -82,11 +109,22 @@
         </button>
       {/each}
       <div class="social">
-        <i class="fab fa-facebook" />
-        <i class="fab fa-github" />
-        <i class="fab fa-instagram" />
-        <i class="fab fa-tiktok" />
-        <i class="fa-solid fa-envelope" />
+        <a href="http://">
+          <i class="fab fa-facebook" />
+        </a>
+        <a href="http://">
+          <i class="fab fa-github" />
+        </a>
+        <a href="http://">
+          <i class="fab fa-instagram" />
+        </a>
+
+        <a href="http://">
+          <i class="fab fa-tiktok" />
+        </a>
+        <a href="http://">
+          <i class="fa-solid fa-envelope" />
+        </a>
       </div>
     </div>
   </header>
