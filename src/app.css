@@ -70,6 +70,10 @@ body {
   background-color: #1a242f;
 }
 
+.nav_buttons a {
+  background-color: red;
+}
+
 #navbar {
   display: flex;
   height: auto;
@@ -80,10 +84,6 @@ body {
 #navbar #bau-logo {
   padding: 10px;
   margin-inline: 2.5rem;
-}
-
-#mobile_menu {
-  display: none;
 }
 
 .mobile_wrapper {
@@ -133,6 +133,12 @@ body {
 }
 .social i:hover {
   box-shadow: 0px 0px 8px lightgrey;
+}
+
+.profiles {
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 1.25rem;
 }
 
 .mobile_and_friends {

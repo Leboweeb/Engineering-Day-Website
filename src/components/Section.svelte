@@ -5,10 +5,11 @@
   export let title = "";
   export let split_dir = "vertical";
   export let text = "";
+  export let bg = "white";
 </script>
 
 <div id={join_with_dash(title)}>
-  <section>
+  <section style:--bg-color={bg}>
     <h1>{title}</h1>
     <hr />
     <div>
@@ -24,6 +25,9 @@
 </div>
 
 <style lang="scss">
+  section {
+    background-color: var(--bg-color);
+  }
   h1,
   div {
     text-align: center;
