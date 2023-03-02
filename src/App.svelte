@@ -1,6 +1,6 @@
 <script lang="ts">
   import Logo from "./assets/bau-logo.png";
-  // import Ziad from "../public/ziad.jpeg_processed.jpeg";
+  import Ziad from "../public/ziad.jpeg_processed.jpeg";
   import Sari from "../public/sari.jpeg_processed.jpeg";
   import Sami from "../public/sami.jpeg_processed.jpeg";
   import Mohammad from "../public/mohammad.jpeg_processed.jpeg";
@@ -65,7 +65,7 @@
     "lym075@student.bau.edu.lb",
     "Jhm431@student.bau.edu.lb",
   ];
-  const images = ["", Sari, Mohammad, Sami, Saja, Nour, Lama, Jana];
+  const images = [Ziad, Sari, Mohammad, Sami, Saja, Nour, Lama, Jana];
 </script>
 
 <svelte:head>
