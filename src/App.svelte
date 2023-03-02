@@ -1,5 +1,13 @@
 <script lang="ts">
   import Logo from "./assets/bau-logo.png";
+  // import Ziad from "../public/ziad.jpeg_processed.jpeg";
+  import Sari from "../public/sari.jpeg_processed.jpeg";
+  import Sami from "../public/sami.jpeg_processed.jpeg";
+  import Mohammad from "../public/mohammad.jpeg_processed.jpeg";
+  import Saja from "../public/saja.jpeg_processed.jpeg";
+  import Nour from "../public/nour.jpeg_processed.jpeg";
+  import Lama from "../public/lama.jpeg_processed.jpeg";
+  import Jana from "../public/jana.jpeg_processed.jpeg";
   import { join_with_dash } from "./lib/Lib.svelte";
   import Section from "./components/Section.svelte";
   import Pie from "./components/Pie.svelte";
@@ -55,6 +63,7 @@
     "lym075@student.bau.edu.lb",
     "Jhm431@student.bau.edu.lb",
   ];
+  const images = [Sari, Mohammad, Sami, Saja, Nour, Lama, Jana];
 </script>
 
 <svelte:head>
@@ -63,7 +72,7 @@
     crossorigin="anonymous"
   ></script>
   <title>ARC Club</title>
-  <link rel="icon" href="/bau-logo.png" type="image/x-icon" />
+  <link rel="icon" href={Logo} type="image/x-icon" />
 </svelte:head>
 <div class="mobile_and_friends">
   <div id="navbar">
@@ -209,14 +218,7 @@
   <p />
   <div class="profiles">
     {#each names as name, i}
-      <Profile
-        {name}
-        src={"/" +
-          name.trim().split(" ")[0].toLowerCase() +
-          ".jpeg_processed.jpeg"}
-        role={roles[i]}
-        email={emails[i]}
-      />
+      <Profile {name} src={images[i]} role={roles[i]} email={emails[i]} />
     {/each}
   </div>
 </div>
