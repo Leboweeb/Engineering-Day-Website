@@ -177,7 +177,7 @@
   </figure>
   <Section
     title={section_names[2]}
-    text={"Our projects may be the most important asset to achieve the club's purpose of allowing students with simiar interests interact and work together in a university setting while building important experiences and hoarding essential knowledge and skills saught after in the industry, not taught at university, and most importantly, having a lot of fun!\nStudents have the freedom to participate in or even start their own projects relevant to the topics of interest of the club : AI, robotics, and gaming."}
+    text={"Your participation in our events will be put in our news section and your name will be publicly displayed.\nWe will actively contact companies for internships and partnership programs. Also, your participation will bolster your CV because we will give you real skills and not bore you with theoretical work.\nOur projects may be the most important asset to achieve the club's purpose of allowing students with simiar interests interact and work together in a university setting while building important experiences and hoarding essential knowledge and skills saught after in the industry, not taught at university, and most importantly, having a lot of fun!\nStudents have the freedom to participate in or even start their own projects relevant to the topics of interest of the club : AI, robotics, and gaming."}
   />
   <Caption
     caption_text="Game controlled with AI hand motion controls"
@@ -191,6 +191,14 @@
     border_color="transparent"
     image="/web.png"
     alt="web"
+    mw={960}
+  />
+
+  <Caption
+    caption_text="Developing IOT solutions for environmental purposes"
+    border_color="transparent"
+    image="/IOT.png"
+    alt="IOT cleaning"
     mw={960}
   />
   <Section
