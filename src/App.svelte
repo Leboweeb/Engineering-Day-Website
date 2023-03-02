@@ -5,7 +5,7 @@
   import Sami from "../public/sami.jpeg_processed.jpeg";
   import Mohammad from "../public/mohammad.jpeg_processed.jpeg";
   import Saja from "../public/saja.jpeg_processed.jpeg";
-  import Nour from "../public/nour.jpeg_processed.jpeg";
+  // import Nour from "../public/nour.jpeg_processed.jpeg";
   import Lama from "../public/lama.jpeg_processed.jpeg";
   import Jana from "../public/jana.jpeg_processed.jpeg";
   import { join_with_dash } from "./lib/Lib.svelte";
@@ -63,7 +63,7 @@
     "lym075@student.bau.edu.lb",
     "Jhm431@student.bau.edu.lb",
   ];
-  const images = [Sari, Mohammad, Sami, Saja, Nour, Lama, Jana];
+  const images = ["", Sari, Mohammad, Sami, Saja, "", Lama, Jana];
 </script>
 
 <svelte:head>
