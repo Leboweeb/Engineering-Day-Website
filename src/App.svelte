@@ -8,6 +8,9 @@
   // import Nour from "../public/nour.jpeg_processed.jpeg";
   import Lama from "../public/lama.jpeg_processed.jpeg";
   import Jana from "../public/jana.jpeg_processed.jpeg";
+  import IOT from "../public/IOT.png";
+  import Web from "../public/web.png";
+  import Mediapipe from "../public/mediapipe.png";
   import { join_with_dash } from "./lib/Lib.svelte";
   import Section from "./components/Section.svelte";
   import Pie from "./components/Pie.svelte";
@@ -191,14 +194,14 @@
   <Caption
     caption_text="Game controlled with AI hand motion controls"
     border_color="transparent"
-    image="/mediapipe.png"
+    image={Mediapipe}
     alt="mediapipe demo"
     mw={642}
   />
   <Caption
     caption_text="Developing the site for this club"
     border_color="transparent"
-    image="/web.png"
+    image={Web}
     alt="web"
     mw={960}
   />
@@ -206,7 +209,7 @@
   <Caption
     caption_text="Developing IOT solutions for environmental purposes"
     border_color="transparent"
-    image="/IOT.png"
+    image={IOT}
     alt="IOT cleaning"
     mw={960}
   />
