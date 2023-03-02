@@ -5,7 +5,7 @@
   import Sami from "../public/sami.jpeg_processed.jpeg";
   import Mohammad from "../public/mohammad.jpeg_processed.jpeg";
   import Saja from "../public/saja.jpeg_processed.jpeg";
-  // import Nour from "../public/nour.jpeg_processed.jpeg";
+  import Nour from "../public/nour.jpeg_processed.jpeg";
   import Lama from "../public/lama.jpeg_processed.jpeg";
   import Jana from "../public/jana.jpeg_processed.jpeg";
   import IOT from "../public/IOT.png";
@@ -29,7 +29,6 @@
   };
   import { tweened } from "svelte/motion";
   import Profile from "./components/Profile.svelte";
-  import Header from "./components/Header.svelte";
   import Caption from "./components/Caption.svelte";
   let percent = 0;
   const store = tweened(0, { duration: 2000 });
@@ -66,7 +65,7 @@
     "lym075@student.bau.edu.lb",
     "Jhm431@student.bau.edu.lb",
   ];
-  const images = ["", Sari, Mohammad, Sami, Saja, "", Lama, Jana];
+  const images = ["", Sari, Mohammad, Sami, Saja, Nour, Lama, Jana];
 </script>
 
 <svelte:head>
@@ -161,6 +160,7 @@
     text={"Many freshmen and graduates alike feel unprepared for work or that the subjects they've learned in school or university are not relevant to their degree. Unfortunately, this is true. This is especially true for computer scientists and engineers who often state that they learn much more on their own than in university.\nThis club aims to be the opposite and let you work on professional level projects and learn in demand skills light years faster than any course. We only ask you to be patient and expect that projects will be hard, because nothing worth doing is easy. "}
   />
   <figure>
+    <h1>Unreadiness Among Students</h1>
     <Pie percent={$store} />
     <figcaption>
       <!-- svelte-ignore a11y-invalid-attribute -->
