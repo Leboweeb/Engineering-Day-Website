@@ -3,7 +3,7 @@
   export let alt: string;
   export let image: string;
   export let mw: number;
-  export let border_color: string = "#cccccc";
+  export let border_color: string = "transparent";
 </script>
 
 <figure style="--col={border_color} --mw={mw}">

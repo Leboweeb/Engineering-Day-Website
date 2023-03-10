@@ -1,9 +1,9 @@
 $hilight-text-color-hover: #00acd8;
 
-@mixin blue_underlined_text($color: black) {
+@mixin blue_underlined_text($color: black, $border: grey) {
   text-decoration: none;
   cursor: pointer;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid $border;
   color: $color;
   &:hover {
     color: $hilight-text-color-hover;

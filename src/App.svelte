@@ -30,6 +30,9 @@
   import { tweened } from "svelte/motion";
   import Profile from "./components/Profile.svelte";
   import Caption from "./components/Caption.svelte";
+  import SplitText from "./components/SplitText.svelte";
+  import Paragraph from "./components/Paragraph.svelte";
+  import Register from "./components/Register.svelte";
   let percent = 0;
   const store = tweened(0, { duration: 2000 });
   $: store.set(percent);
@@ -155,52 +158,55 @@
   </div>
 </div>
 <div class="make_space">
-  <Section
-    title={section_names[1]}
-    text={"Many freshmen and graduates alike feel unprepared for work or that the subjects they've learned in school or university are not relevant to their degree. Unfortunately, this is true. This is especially true for computer scientists and engineers who often state that they learn much more on their own than in university.\nThis club aims to be the opposite and let you work on professional level projects and learn in demand skills light years faster than any course. We only ask you to be patient and expect that projects will be hard, because nothing worth doing is easy. "}
+  <Section title={section_names[1]} />
+  <Paragraph
+    title="Why ARC?"
+    text={"Your participation in our events will be put in our news section and your name will be publicly displayed.\nWe will host workshops to imporove your skills.\nWe will actively contact companies for internships and partnership programs. Also, your participation will bolster your CV because we will give you real skills .\nMeet people with similar intrests and have fun!\nAnyone can start their own project with fellow club members, no hierarchy or bureaucracy!"}
+  />
+  <Paragraph
+    title="How Does it Work?"
+    ordered={true}
+    text={"Start a project (about AI or robotics, of course).\nGather fellow club members to see who is interested. (Note that we might run several projects in parallel)\nWork on the project and finish it.\nTell us about the details so that we can publish it on the website\nSuccess!"}
   />
   <figure>
-    <h1>Unreadiness Among Students</h1>
+    <h2>Job Opportunities and Activities</h2>
     <Pie percent={$store} />
     <figcaption>
       <!-- svelte-ignore a11y-invalid-attribute -->
-      Percentage of students who feel unprepared for
+      Post graduation job offer percentage :
       <a
         on:click={() => {
-          percent = 52;
+          percent = 57.5;
         }}
         class="interactive_buttons"
-        href="javascript:void(0)">work</a
+        href="javascript:void(0)">internship experience</a
       >
       , as opposed to
       <!-- svelte-ignore a11y-invalid-attribute -->
       <a
         on:click={() => {
-          percent = 81;
+          percent = 42.5;
         }}
         class="interactive_buttons"
-        href="javascript:void(0)">college</a
-      >
+        href="javascript:void(0)"
+        >no experience
+      </a>
       [<a
-        href="https://www.edweek.org/teaching-learning/teens-feel-ready-for-college-but-not-so-much-for-work/2019/09"
+        href="https://www.zippia.com/advice/internship-statistics/"
         class="interactive_buttons">1</a
       >] (Click to show)
     </figcaption>
   </figure>
-  <Section
-    title={section_names[2]}
-    text={"Your participation in our events will be put in our news section and your name will be publicly displayed.\nWe will actively contact companies for internships and partnership programs. Also, your participation will bolster your CV because we will give you real skills and not bore you with theoretical work.\nOur projects may be the most important asset to achieve the club's purpose of allowing students with simiar interests interact and work together in a university setting while building important experiences and hoarding essential knowledge and skills saught after in the industry, not taught at university, and most importantly, having a lot of fun!\nStudents have the freedom to participate in or even start their own projects relevant to the topics of interest of the club : AI, robotics, and gaming."}
-  />
+  <Register limit={80} />
+  <Section title={section_names[2]} />
   <Caption
     caption_text="Game controlled with AI hand motion controls"
-    border_color="transparent"
     image={Mediapipe}
     alt="mediapipe demo"
     mw={642}
   />
   <Caption
     caption_text="Developing the site for this club"
-    border_color="transparent"
     image={Web}
     alt="web"
     mw={960}
@@ -208,16 +214,16 @@
 
   <Caption
     caption_text="Developing IOT solutions for environmental purposes"
-    border_color="transparent"
     image={IOT}
     alt="IOT cleaning"
     mw={960}
   />
-  <Section
-    title={section_names[3]}
-    text={"If you want to contact us, click the register link in the navigation bar\nor click at any of our icons to send us an email"}
-  />
-
+  <Section title={section_names[3]}>
+    <SplitText
+      text={"If you want to contact us, click the register link in the navigation bar\nor click at any of our icons to send us an email"}
+      split_dir="horizontal"
+    />
+  </Section>
   <p />
   <div class="profiles">
     {#each names as name, i}
