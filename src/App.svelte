@@ -11,10 +11,9 @@
   import IOT from "../public/IOT.png";
   import Web from "../public/web.png";
   import Mediapipe from "../public/mediapipe.png";
-  import { join_with_dash } from "./lib/Lib.svelte";
+  const section_names = ["Register", "About", "Projects", "Contact Us"];
   import Section from "./components/Section.svelte";
   import Pie from "./components/Pie.svelte";
-  const section_names = ["Register", "About", "Projects", "Contact Us"];
   const toggle_classname = (elem: HTMLElement, _class: string) => {
     if (elem.classList.contains(_class)) {
       elem.classList.remove(_class);
@@ -33,6 +32,7 @@
   import SplitText from "./components/SplitText.svelte";
   import Paragraph from "./components/Paragraph.svelte";
   import Register from "./components/Register.svelte";
+  import Buttons from "./components/Buttons.svelte";
   let percent = 0;
   const store = tweened(0, { duration: 2000 });
   $: store.set(percent);
@@ -83,61 +83,14 @@
   <div id="navbar">
     <a href="#top" id="bau-logo"><img src={Logo} alt="Bau Logo" /></a>
     <div class="nav_text">
-      {#each section_names as sec, i}
-        {#if i == 0}
-          <button
-            class="nav_buttons"
-            on:click={() => {
-              window.location.href =
-                "https://docs.google.com/forms/d/e/1FAIpQLSc848WhWQQKn8eycGvNfkFiVMHy1XPYB3hM0aS1fiArqcprbQ/viewform?usp=sf_link";
-            }}
-          >
-            {sec}
-          </button>
-        {:else}
-          <button
-            class="nav_buttons"
-            on:click={() => {
-              let elem = document.querySelector(`#${join_with_dash(sec)}`);
-              elem.scrollIntoView({
-                block: "center",
-              });
-            }}
-          >
-            {sec}
-          </button>
-        {/if}
-      {/each}
+      <Buttons />
       <button id="mobile_menu" on:click={toggle_mobile_menu}>
         <i class="fa-solid fa-bars" />
       </button>
     </div>
   </div>
   <div class="mobile_wrapper">
-    {#each section_names as sec, i}
-      {#if i == 0}
-        <button
-          class="nav_buttons_mobile"
-          on:click={() => {
-            window.location.href =
-              "https://docs.google.com/forms/d/e/1FAIpQLSc848WhWQQKn8eycGvNfkFiVMHy1XPYB3hM0aS1fiArqcprbQ/viewform?usp=sf_link";
-          }}
-        >
-          {sec}
-        </button>
-      {:else}
-        <button
-          class="nav_buttons_mobile"
-          on:click={() => {
-            let elem = document.querySelector(`#${join_with_dash(sec)}`);
-            let elem_rect = elem.getBoundingClientRect();
-            window.scrollTo(elem_rect.x, elem_rect.y);
-          }}
-        >
-          {sec}
-        </button>
-      {/if}
-    {/each}
+    <Buttons />
     <div class="social">
       <a href="https://www.facebook.com/profile.php?id=100090891691460">
         <i class="fab fa-facebook" />

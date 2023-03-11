@@ -113,18 +113,17 @@ body {
 .mobile_wrapper {
   display: none;
   width: 100%;
-}
-.nav_buttons_mobile {
-  align-content: center;
-  display: block;
-  width: 100%;
-  padding-block: 5px;
-  text-decoration: none;
-  border: none;
-  background-color: #1a242f;
-  color: white;
-  &:hover {
-    background-color: #18bc9c;
+  button {
+    align-content: center;
+    width: 100%;
+    padding-block: 5px;
+    text-decoration: none;
+    border: none;
+    background-color: #1a242f;
+    color: white;
+    &:hover {
+      background-color: #18bc9c;
+    }
   }
 }
 .visible {
@@ -167,5 +166,11 @@ body {
   #mobile_menu {
     display: inline-block;
     margin-inline: 0;
+  }
+
+  .mobile_wrapper {
+    button {
+      display: block;
+    }
   }
 }

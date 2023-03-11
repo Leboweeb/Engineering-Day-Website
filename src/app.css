@@ -90,10 +90,8 @@ body {
   display: none;
   width: 100%;
 }
-
-.nav_buttons_mobile {
+.mobile_wrapper button {
   align-content: center;
-  display: block;
   width: 100%;
   padding-block: 5px;
   text-decoration: none;
@@ -101,7 +99,7 @@ body {
   background-color: #1a242f;
   color: white;
 }
-.nav_buttons_mobile:hover {
+.mobile_wrapper button:hover {
   background-color: #18bc9c;
 }
 
@@ -154,6 +152,9 @@ body {
   #mobile_menu {
     display: inline-block;
     margin-inline: 0;
+  }
+  .mobile_wrapper button {
+    display: block;
   }
 }
 
