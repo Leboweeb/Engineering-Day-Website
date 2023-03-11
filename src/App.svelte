@@ -198,7 +198,7 @@
       >] (Click to show)
     </figcaption>
   </figure>
-  <Register limit={80} />
+  <Register limit={107} />
   <Section title={section_names[2]} />
   <Caption
     caption_text="Game controlled with AI hand motion controls"
