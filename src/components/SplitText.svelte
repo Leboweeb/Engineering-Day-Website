@@ -11,8 +11,8 @@
 
 <style lang="scss">
   div {
-    display: --var(dis);
-    justify-content: space-evenly;
+    display: block;
+    text-align: center;
     p {
       margin-block: 2.5rem;
       margin-inline: 0.5rem;

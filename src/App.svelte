@@ -172,13 +172,11 @@
     alt="IOT cleaning"
     mw={960}
   />
-  <Section title={section_names[3]}>
-    <SplitText
-      text={"If you want to contact us, click the register link in the navigation bar\nor click at any of our icons to send us an email"}
-      split_dir="horizontal"
-    />
-  </Section>
-  <p />
+  <Section title={section_names[3]} />
+  <SplitText
+    text={"If you want to contact us, click the register link in the navigation bar\nor click at any of our icons to send us an email\n"}
+    split_dir={"horizontal"}
+  />
   <div class="profiles">
     {#each names as name, i}
       <Profile {name} src={images[i]} role={roles[i]} email={emails[i]} />
