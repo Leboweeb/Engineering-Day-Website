@@ -99,8 +99,9 @@
             class="nav_buttons"
             on:click={() => {
               let elem = document.querySelector(`#${join_with_dash(sec)}`);
-              let elem_rect = elem.getBoundingClientRect();
-              window.scrollTo(elem_rect.x, elem_rect.y);
+              elem.scrollIntoView({
+                block: "center",
+              });
             }}
           >
             {sec}

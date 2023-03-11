@@ -5,8 +5,8 @@
   export let bg = "white";
 </script>
 
-<div id={join_with_dash(title)}>
-  <section style:--bg-color={bg}>
+<div>
+  <section style:--bg-color={bg} id={join_with_dash(title)}>
     <h1>{title}</h1>
     <hr />
   </section>

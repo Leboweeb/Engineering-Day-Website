@@ -1,6 +1,7 @@
 <script lang="ts">
   export let limit: number;
   let container: Element;
+  let parent: Element;
   import { onMount } from "svelte";
 
   const animate_counter = (
@@ -21,17 +22,21 @@
   };
   let observer = new IntersectionObserver(
     (entries: IntersectionObserverEntry[]) => {
-      animate_counter(container, 0, limit, 5000);
-      observer.unobserve(container);
+      let counter = entries[0];
+      if (!counter.isIntersecting) {
+        return;
+      }
+      animate_counter(counter.target, 0, limit, 5000);
+      observer.unobserve(counter.target);
     },
-    { threshold: 1 }
+    { threshold: 1, root: parent }
   );
   onMount(() => {
     observer.observe(container);
   });
 </script>
 
-<div id="parent">
+<div id="parent" bind:this={parent}>
   <b class="countdown" bind:this={container}>0</b>
   <div>
     <p>Members and counting.</p>
